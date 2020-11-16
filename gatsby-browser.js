@@ -1,7 +1,4 @@
-/**
- * Implement Gatsby's Browser APIs in this file.
- *
- * See: https://www.gatsbyjs.com/docs/browser-apis/
- */
 
-// You can delete this file if you're not using it
+import { ProvideStores }  from './provide-stores'
+
+export const wrapRootElement = ProvideStores
