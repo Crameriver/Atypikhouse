@@ -1,0 +1,45 @@
+
+.customImg {
+    width: 220px;
+    object-fit: contain !important
+}
+.listMenus {
+    list-style: none;
+    padding: 0;
+    margin: auto;
+}
+.listMenus li {
+    display: inline;
+    font-size: 15px;
+    padding-right: 0.8rem;
+    cursor: pointer;
+}
+.d-flex {
+    display: flex !important
+}
+.m-auto {
+    margin: auto;
+}
+.mr-3 {
+    margin-right: 0.8em;
+}
+.banner{
+    height: 700px;
+    background: url("../images/pexels-matheus-bertelli-2376997.jpg") center no-repeat;
+    background-size: 100% !important;
+}
+.bannerContact{
+    height: 387px;
+    background: url("../images/imagecontact.png") center no-repeat;
+    background-size: 100% !important;
+}
+
+.filterContact {
+    position: absolute;
+    width: 100%;
+    height: 387px;
+    left: 0px;
+    top: 82px;
+
+    background: rgba(35, 34, 34, 0.64);
+}

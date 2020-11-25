@@ -1,36 +1,42 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { useStaticQuery, graphql, StaticQuery } from "gatsby"
 import Img from "gatsby-image"
+import '../style/all.scss'
+function renderImage(file) {
+  console.log('files=> ', file);
+  //Ajouter une className dans la props pour l'img
+  const myclass = file.node.relativePath =='Atypikhouse.png'?'customImg':null
 
-/*
- * This component is built using `gatsby-image` to automatically serve optimized
- * images with lazy loading and reduced file sizes. The image is loaded using a
- * `useStaticQuery`, which allows us to load the image from directly within this
- * component, rather than having to pass the image data down from pages.
- *
- * For more information, see the docs:
- * - `gatsby-image`: https://gatsby.dev/gatsby-image
- * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
- */
+  //Image en base64
+  const files = file.node.childImageSharp.fluid
+  
+  return <Img fluid={files} className={myclass} imgStyle={{
+    objectFit: "contain",
+    objectPosition: "50% 50%",}} />
+}
 
-const Image = () => {
-  const data = useStaticQuery(graphql`
-    query {
-      placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
-        childImageSharp {
-          fluid(maxWidth: 300) {
-            ...GatsbyImageSharpFluid
+const Image = function (props) {
+  return <StaticQuery
+    query={graphql`
+      query {
+      images: allFile(filter:{ extension: { regex: "/jpeg|jpg|png|gif/"}}) {
+      edges {
+        node {
+          extension
+            relativePath
+              childImageSharp {
+                fluid(maxWidth: 1000) {
+                  ...GatsbyImageSharpFluid
+                }
+              }
+            }
           }
         }
       }
-    }
-  `)
-
-  if (!data?.placeholderImage?.childImageSharp?.fluid) {
-    return <div>Picture not found</div>
-  }
-
-  return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
+  `}
+    //Ici on recupere l'image correspondant à notre image passé en prop
+    render={({ images, classes }) => renderImage(images.edges.find(image => image.node.relativePath === props.images))}
+  />
 }
 
 export default Image
