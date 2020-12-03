@@ -13,6 +13,7 @@
     font-size: 15px;
     padding-right: 0.8rem;
     cursor: pointer;
+    font-weight: bold;
 }
 .d-flex {
     display: flex !important
@@ -29,17 +30,36 @@
     background-size: 100% !important;
 }
 .bannerContact{
-    height: 387px;
+    width: 100vw;
+    height: 26vw;
     background: url("../images/imagecontact.png") center no-repeat;
     background-size: 100% !important;
 }
 
 .filterContact {
     position: absolute;
-    width: 100%;
-    height: 387px;
-    left: 0px;
-    top: 82px;
-
+    width: 100vw;
+    height: 26vw;
     background: rgba(35, 34, 34, 0.64);
+}
+
+.ContactTitle {
+    position: absolute;
+    text-align: center;
+    top: 15.5vw;
+
+    font-family: Montserrat;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 3.5vw;
+    line-height: 56px;
+    /* identical to box height */
+
+    color: #FFFFFF;
+}
+
+.ContactMap {
+    margin: 5vw;
+    height: 24vw;
+    border: none;
 }
